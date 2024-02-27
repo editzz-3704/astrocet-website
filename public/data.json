@@ -1,0 +1,12 @@
+{
+    "items": [
+      { "id": 1, "name": "Drishti", "date":"22/05/2024", "img":"/images/yip.png", "description":" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil." , "brochure":"", "register":""},
+      { "id": 2, "name": "Event 2" , "date":"08/08/2023" , "img":"/images/yip.png", "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.", "brochure":"", "register":""},
+      { "id": 3, "name": "Event 3", "date":"09/08/2023", "img":"/images/yip.png" , "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.", "brochure":"", "register":"" },
+      { "id": 4, "name": "Event 4", "date":"10/08/2023", "img":"/images/yip.png" , "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.", "brochure":"", "register":"" },
+      { "id": 5, "name": "Event 5", "date":"03/08/2023", "img":"/images/yip.png" , "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.", "brochure":"", "register":"" },
+      { "id": 6, "name": "disha", "date":"06/08/2023", "img":"/images/yip.png" , "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.", "brochure":"", "register":"" }
+  
+    ]
+  }
+  

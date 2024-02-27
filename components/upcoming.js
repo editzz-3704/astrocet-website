@@ -1,7 +1,9 @@
-import React from "react";
+
+import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+// import jsonData from 'data.json';
 
 const Upcoming = () => {
   const sliderSettings = {
@@ -26,8 +28,37 @@ const Upcoming = () => {
     ],
   };
 
+
+  const [jsonData, setJsonData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/data.json'); // Fetch data from data.json in the public directory
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json(); // Extract JSON data
+        setJsonData(data); // Update state with JSON data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+
+
+
   return (
-    <section className="bg-transparent z-10 relative">
+
+
+
+
+
+<section className="bg-transparent z-10 relative">
      <style>
   {`
     .slick-slide {
@@ -90,102 +121,28 @@ const Upcoming = () => {
       <div className="container mx-auto px-4 mt-16">
         <Slider {...sliderSettings}>
           {/* Duplicate the following block for each event */}
-          <div className="upcoming-card">
-            <img className="w-full h-32 object-cover" src="/images/yip.png" alt="yip" />
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-0 text-center">Young Innovators Program</div>
-              <p className="text-center mb-3">Date: 07/08/2023</p>
-              <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                perferendis eaque, exercitationem praesentium nihil.
-              </p>
-            </div>
-            <div className="flex justify-between mt-0 px-5 pb-3">
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">View Brochure</button>
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">Register</button>
-            </div>
-          </div>
+          {jsonData && jsonData.items
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .map(item => (
+    <div className="upcoming-card" key={item.id}>
+      <img className="w-full h-32 object-cover" src={item.img} alt="poster" />
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-0 text-center">{item.name}</div>
+        <p className="text-center mb-3">{item.date}</p>
+        <p className="text-gray-700 text-base">
+          {item.description}
+        </p>
+      </div>
+      <div className="flex justify-between mt-0 px-5 pb-3">
+        <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">{item.brochure}</button>
+        <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">{item.register}</button>
+      </div>
+    </div>
+  ))}
+          
 
 
-          <div className="upcoming-card">
-            <img className="w-full h-32 object-cover" src="/images/yip.png" alt="yip" />
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-0 text-center">Young Innovators Program</div>
-              <p className="text-center mb-3">Date: 07/08/2023</p>
-              <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                perferendis eaque, exercitationem praesentium nihil.
-              </p>
-            </div>
-            <div className="flex justify-between mt-0 px-5 pb-3">
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">View Brochure</button>
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">Register</button>
-            </div>
-          </div>
 
-          <div className="upcoming-card">
-            <img className="w-full h-32 object-cover" src="/images/yip.png" alt="yip" />
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-0 text-center">Young Innovators Program</div>
-              <p className="text-center mb-3">Date: 07/08/2023</p>
-              <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                perferendis eaque, exercitationem praesentium nihil.
-              </p>
-            </div>
-            <div className="flex justify-between mt-0 px-5 pb-3">
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">View Brochure</button>
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">Register</button>
-            </div>
-          </div>
-
-          <div className="upcoming-card">
-            <img className="w-full h-32 object-cover" src="/images/yip.png" alt="yip" />
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-0 text-center">Young Innovators Program</div>
-              <p className="text-center mb-3">Date: 07/08/2023</p>
-              <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                perferendis eaque, exercitationem praesentium nihil.
-              </p>
-            </div>
-            <div className="flex justify-between mt-0 px-5 pb-3">
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">View Brochure</button>
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">Register</button>
-            </div>
-          </div>
-
-          <div className="upcoming-card">
-            <img className="w-full h-32 object-cover" src="/images/yip.png" alt="yip" />
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-0 text-center">Young Innovators Program</div>
-              <p className="text-center mb-3">Date: 07/08/2023</p>
-              <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                perferendis eaque, exercitationem praesentium nihil.
-              </p>
-            </div>
-            <div className="flex justify-between mt-0 px-5 pb-3">
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">View Brochure</button>
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">Register</button>
-            </div>
-          </div>
-
-          <div className="upcoming-card">
-            <img className="w-full h-32 object-cover" src="/images/yip.png" alt="yip" />
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-0 text-center">Young Innovators Program</div>
-              <p className="text-center mb-3">Date: 07/08/2023</p>
-              <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                perferendis eaque, exercitationem praesentium nihil.
-              </p>
-            </div>
-            <div className="flex justify-between mt-0 px-5 pb-3">
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">View Brochure</button>
-              <button className="bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white">Register</button>
-            </div>
-          </div>
           {/* End of duplicated block */}
           {/* Duplicate the above block for two more events */}
           {/* Make sure to update content and image paths for each event */}
